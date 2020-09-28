@@ -10,5 +10,11 @@ class ClearSpider(scrapy.Spider):
         yield {
 	    "jobs_title": resp.css('a *::text').extract_first(default=''),
 	    "jobs_location": resp.css('span.location *::text').extract_first(default=''),
-	    "jobs_url": response.urljoin(resp.css('a::attr(href)').extract_first(default=''))
+	    "jobs_url": response.urljoin(resp.css('a::attr(href)').extract_first(default='')),
+	    "company_img_url": response.css('img::attr(src)').extract_first()
 	}
+        #if jobs_url:
+	#    yield scrapy.Request(url, self.scrape_job_post)
+
+  def scrape_job_post(self, response):
+      return
