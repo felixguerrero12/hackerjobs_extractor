@@ -10,7 +10,8 @@ class HashiCorpSpider(scrapy.Spider):
         yield {
 	    "jobs_title": resp.css('span.g-type-display-6.title *::text').extract_first(default=''),
 	    "jobs_location": resp.css('p.g-type-label.location *::text').extract_first(default=''),
-	    "jobs_url": response.urljoin(resp.css('a::attr(href)').extract_first(default=''))
+	    "jobs_url": response.urljoin(resp.css('a::attr(href)').extract_first(default='')),
+	    "company_logo": 'https://www.hashicorp.com/img/hashicorp-logos/hashicorp-logo-black.svg'
 	}
 	#if jobs_url:
 	#   yield scrapy.Request(urljobs_url, self.scrape_job_post)
